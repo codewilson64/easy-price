@@ -6,6 +6,7 @@ import { ClerkIcon } from "./_icons/Clerk";
 import { NeonIcon } from "./_icons/Neon";
 import { subscriptionTiersInOrder } from "@/data/subscriptionTiers";
 import { formatCompactNumber } from "@/lib/formatters";
+import Logo from "@/components/Logo";
 
 // Shadcn
 import { Button } from "@/components/ui/button";
@@ -80,6 +81,74 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <footer className="container pt-16 pb-8 flex flex-col sm:flex-row gap-8 sm:gap-4 justify-between items-start">
+        <Link href="/">
+          <Logo />
+        </Link>
+        <div className="flex flex-col sm:flex-row gap-20">
+          <div className="flex flex-col gap-8">
+            <FooterLinkGroup 
+              title="Help" 
+              links={[
+                { label: "PPP Discounts", href: "#" },
+                { label: "Discount API", href: "#" }
+              ]}
+            />
+            <FooterLinkGroup 
+              title="Solutions" 
+              links={[
+                { label: "Newsletter", href: "#" },
+                { label: "SaaS Business", href: "#" },
+                { label: "Online Courses", href: "#" }
+              ]}
+            />
+          </div>
+          <div className="flex flex-col gap-8">
+            <FooterLinkGroup 
+              title="Features" 
+              links={[
+                { label: "PPP Discounts", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup 
+              title="Tools" 
+              links={[
+                { label: "Salary Converter", href: "#" },
+                { label: "Coupon Generator", href: "#" },
+                { label: "Stripe App", href: "#" }
+              ]}
+            />
+            <FooterLinkGroup 
+              title="Company" 
+              links={[
+                { label: "Affiliate", href: "#" },
+                { label: "Twitter", href: "#" },
+                { label: "Terms of Service", href: "#" }
+              ]}
+            />
+          </div>
+          <div className="flex flex-col gap-8">
+            <FooterLinkGroup 
+              title="Integrations" 
+              links={[
+                { label: "Lemon Squeezy", href: "#" },
+                { label: "Gumroad", href: "#" },
+                { label: "Stripe", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup 
+              title="Tutorials" 
+              links={[
+                { label: "Any Website", href: "#" },
+                { label: "SaaS Business", href: "#" },
+                { label: "Online Courses", href: "#" },
+                { label: "Stripe", href: "#" },
+              ]}
+            />
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
@@ -137,4 +206,19 @@ function Feature({
       <span>{children}</span>
     </div>
   )
+}
+
+function FooterLinkGroup({ title, links }: { title: string, links: {label: string, href: string}[] }) {
+  return (
+    <div className="flex flex-col gap-4">
+      <h3 className="font-semibold">{title}</h3>
+        <ul className="flex flex-col gap-2 text-sm">
+          {links.map(link => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
+    </div>
+  )  
 }
